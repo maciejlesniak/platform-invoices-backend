@@ -4,10 +4,14 @@ pipeline {
 
     stages {
        stage('Build') {
-        sh "./gradlew clean bootJar"
+        steps {
+            sh "./gradlew clean bootJar"
+        }
        }
        stage('Results') {
-          archiveArtifacts artifacts: 'build/libs/*.jar', fingerprint: true
+        steps {
+            archiveArtifacts artifacts: 'build/libs/*.jar', fingerprint: true
+        }
        }
     }
 
